@@ -1,5 +1,6 @@
 package com.amanda.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -10,12 +11,14 @@ import java.util.Set;
 @Entity
 @Table(name = "tb_category")
 public class Category implements Serializable {
-    @Transient
-    private final Set<Product> products = new HashSet<>();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "categories")
+    private Set<Product> products = new HashSet<>();
 
     public Category() {
     }

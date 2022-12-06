@@ -11,8 +11,7 @@ import java.util.Set;
 @Table(name = "tb_product")
 public class Product implements Serializable {
     //set garante que um produto nao tenha mais de uma categoria, temos que estanciar para garantir que nao comece nula.
-    @Transient
-    private final Set<Category> categories = new HashSet<>();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -20,6 +19,12 @@ public class Product implements Serializable {
     private String description;
     private Double price;
     private String imgUrl;
+
+    @ManyToMany
+    @JoinTable(name = "tb_produc_category",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories = new HashSet<>();
 
     public Product() {
     }
