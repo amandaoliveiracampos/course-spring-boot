@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Objects;
 
+// uma classe entidade , que e mapeada na minha tabela de banco de dados.
 @Entity
 @Table(name = "tb_order")
 public class Order implements Serializable {
@@ -17,14 +18,16 @@ public class Order implements Serializable {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
+    //enum
     private Integer orderStatus;
 
+    //muitos orders para um usuario
     @ManyToOne
+    // chave estrangeira
     @JoinColumn(name = "cliente_id")
     private User client;
 
-    public Order(){
-
+    public Order() {
     }
 
     public Order(Long id, Instant moment, OrderStatus orderStatus, User client) {

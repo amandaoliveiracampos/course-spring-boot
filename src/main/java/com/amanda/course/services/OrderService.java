@@ -6,21 +6,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
-    @Service
-    public class OrderService {
-        @Autowired
-        private OrderRepository repository;
+// e responsavel por realizar todos os servicos necessarios
+@Service
+public class OrderService {
 
-        public List<Order> findAll(){
-            return repository.findAll();
-        }
-        public Order findById(Long id){
-            Optional<Order> obj = repository.findById(id);
-            return  obj.get();
-        }
+    @Autowired
+    private OrderRepository repository;
+
+    // metodo que retorna todos os order em uma lista
+    public List<Order> findAll() {
+        return repository.findAll();
     }
+
+    // metodo que retorna um order em que o id seja = ao fornecido.
+    public Order findById(Long id) {
+        Order order = repository.findById(id).get();
+        return order;
+    }
+}
 
 
 
