@@ -12,9 +12,12 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_ordem_item")
 public class OrderItem implements Serializable {
+
     @EmbeddedId
     private OrderItemPk id = new OrderItemPk();
+
     private Integer quantity;
+
     private Double price;
 
     public OrderItem() {
@@ -77,4 +80,5 @@ public class OrderItem implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

@@ -9,12 +9,13 @@ import jakarta.persistence.ManyToOne;
 import java.io.Serializable;
 import java.util.Objects;
 
-// classe auxiliar de chave primaria composta
 @Embeddable
 public class OrderItemPk implements Serializable {
+
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;
+
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
@@ -47,4 +48,5 @@ public class OrderItemPk implements Serializable {
     public int hashCode() {
         return Objects.hash(order, product);
     }
+
 }

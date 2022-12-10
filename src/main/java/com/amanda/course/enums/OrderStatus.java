@@ -1,4 +1,4 @@
-package com.amanda.course.entities.enums;
+package com.amanda.course.enums;
 
 public enum OrderStatus {
 
@@ -26,4 +26,5 @@ public enum OrderStatus {
     public int getCode() {
         return code;
     }
+
 }

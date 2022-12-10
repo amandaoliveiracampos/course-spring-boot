@@ -14,18 +14,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
+
     @Autowired
     private ProductService service;
 
     @GetMapping
     public ResponseEntity<List<Product>> findAll() {
-        List<Product> list = service.findAll();
-        return ResponseEntity.ok().body(list);
+        return ResponseEntity.ok(service.findAll());
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Product> findById(@PathVariable Long id) {
-        Product obj = service.findById(id);
-        return ResponseEntity.ok().body(obj);
+        return ResponseEntity.ok(service.findById(id));
     }
+    
 }

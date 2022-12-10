@@ -1,6 +1,7 @@
 package com.amanda.course.services;
 
 import com.amanda.course.entities.Category;
+import com.amanda.course.exceptions.ControllerNotFoundException;
 import com.amanda.course.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 @Service
 public class CategoryService {
+
     @Autowired
     private CategoryRepository repository;
 
@@ -18,7 +20,7 @@ public class CategoryService {
     }
 
     public Category findById(Long id) {
-        Optional<Category> obj = repository.findById(id);
-        return obj.get();
+        return repository.findById(id).orElseThrow(() -> new ControllerNotFoundException(id));
     }
+
 }

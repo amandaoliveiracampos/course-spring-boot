@@ -11,28 +11,21 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-// a classe responsavel pela comunicacao REST(responsavel pela comunicacao web)
 @RestController
-// caminho padrao para meu controle REST
-@RequestMapping(value = "/orders")
+@RequestMapping("/orders")
 public class OrderController {
 
-    // annotation responsavel pela injecao de dependencia
     @Autowired
     private OrderService service;
 
-    //findAll significa encontrar todos, nesse caso a lista de order
     @GetMapping
     public ResponseEntity<List<Order>> findAll() {
-        List<Order> list = service.findAll();
-        return ResponseEntity.ok().body(list);
+        return ResponseEntity.ok(service.findAll());
     }
 
-    // findById significa encontrar pelo id, nesse
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Order> findById(@PathVariable Long id) {
-        Order order = service.findById(id);
-        return ResponseEntity.ok().body(order);
-
+        return ResponseEntity.ok(service.findById(id));
     }
+
 }

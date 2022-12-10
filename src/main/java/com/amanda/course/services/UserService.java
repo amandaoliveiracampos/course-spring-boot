@@ -2,8 +2,8 @@ package com.amanda.course.services;
 
 import com.amanda.course.entities.User;
 import com.amanda.course.repositories.UserRepository;
-import com.amanda.course.services.exceptions.DatabaseException;
-import com.amanda.course.services.exceptions.ResourceNotFoundException;
+import com.amanda.course.exceptions.DatabaseException;
+import com.amanda.course.exceptions.ControllerNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @Service
 public class UserService {
+
     @Autowired
     private UserRepository repository;
 
@@ -23,37 +24,37 @@ public class UserService {
     }
 
     public User findById(Long id) {
-        Optional<User> obj = repository.findById(id);
-        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
+        return repository.findById(id).orElseThrow(() -> new ControllerNotFoundException(id));
     }
 
-    public User insert(User obj) {
-        return repository.save(obj);
+    public User save(User user) {
+        return repository.save(user);
     }
 
     public void delete(Long id) {
         try {
             repository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
-            throw new ResourceNotFoundException(id);
+            throw new ControllerNotFoundException(id);
         } catch (DataIntegrityViolationException e) {
             throw new DatabaseException(e.getMessage());
         }
     }
 
-    public User update(Long id, User obj) {
+    public User update(Long id, User user) {
         try {
             User entity = repository.getReferenceById(id);
-            updateData(entity, obj);
+            updateData(entity, user);
             return repository.save(entity);
         } catch (EntityNotFoundException e) {
-            throw new ResourceNotFoundException(id);
+            throw new ControllerNotFoundException(id);
         }
     }
 
-    private void updateData(User entity, User obj) {
-        entity.setName(obj.getName());
-        entity.setEmail(obj.getEmail());
-        entity.setPhone(obj.getPhone());
+    private void updateData(User entity, User user) {
+        entity.setName(user.getName());
+        entity.setEmail(user.getEmail());
+        entity.setPhone(user.getPhone());
     }
+
 }

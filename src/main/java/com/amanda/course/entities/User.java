@@ -12,19 +12,21 @@ import java.util.Objects;
 @Table(name = "tb_user")
 public class User implements Serializable {
 
-    //para que nao aconteca o loop.
     @JsonIgnore
-    //muitos para um, mapeada pelo atributo client
     @OneToMany(mappedBy = "client")
     private final List<Order> orders = new ArrayList<>();
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String email;
-    private String phone;
-    private String password;
 
+    private String name;
+
+    private String email;
+
+    private String phone;
+
+    private String password;
 
     public User() {
     }
@@ -93,4 +95,5 @@ public class User implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

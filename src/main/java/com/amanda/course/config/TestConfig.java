@@ -1,7 +1,7 @@
 package com.amanda.course.config;
 
 import com.amanda.course.entities.*;
-import com.amanda.course.entities.enums.OrderStatus;
+import com.amanda.course.enums.OrderStatus;
 import com.amanda.course.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,13 +11,13 @@ import org.springframework.context.annotation.Profile;
 import java.time.Instant;
 import java.util.Arrays;
 
-// classe que estancia os conteudos para dentro da tabela
 @Configuration
 @Profile("test")
 public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private OrderRepository orderRepository;
 
@@ -78,4 +78,5 @@ public class TestConfig implements CommandLineRunner {
 
         orderRepository.save(o1);
     }
+    
 }

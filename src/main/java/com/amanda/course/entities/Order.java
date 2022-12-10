@@ -1,6 +1,6 @@
 package com.amanda.course.entities;
 
-import com.amanda.course.entities.enums.OrderStatus;
+import com.amanda.course.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
@@ -10,22 +10,20 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-// uma classe entidade, que e mapeada na minha tabela de banco de dados.
 @Entity
 @Table(name = "tb_order")
 public class Order implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant moment;
-    //enum
+
     private Integer orderStatus;
 
-    //muitos orders para um usuario
     @ManyToOne
-    // chave estrangeira
     @JoinColumn(name = "cliente_id")
     private User client;
 
@@ -110,4 +108,5 @@ public class Order implements Serializable {
     public int hashCode() {
         return Objects.hash(id, moment, client);
     }
+
 }

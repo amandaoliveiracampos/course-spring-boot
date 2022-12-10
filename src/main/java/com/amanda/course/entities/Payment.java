@@ -10,10 +10,13 @@ import java.util.Objects;
 @Entity
 @Table(name = "tb_payment")
 public class Payment implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Instant moment;
+
     @JsonIgnore
     @OneToOne
     @MapsId
@@ -64,4 +67,5 @@ public class Payment implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }

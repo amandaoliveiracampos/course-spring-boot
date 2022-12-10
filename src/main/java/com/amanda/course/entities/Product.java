@@ -11,14 +11,17 @@ import java.util.Set;
 @Entity
 @Table(name = "tb_product")
 public class Product implements Serializable {
-    //set garante que um produto nao tenha mais de uma categoria, temos que estanciar para garantir que nao comece nula.
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private String description;
+
     private Double price;
+
     private String imgUrl;
 
     @ManyToMany
@@ -26,6 +29,7 @@ public class Product implements Serializable {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
+
     @OneToMany(mappedBy = "id.product")
     private Set<OrderItem> items = new HashSet<>();
 
@@ -106,4 +110,5 @@ public class Product implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
