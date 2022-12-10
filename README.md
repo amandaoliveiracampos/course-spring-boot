@@ -5,16 +5,15 @@
 
 Projeto web services com Spring Boot e JPA / Hibernate é um projeto em back-end construído durante a aula ministrada pelo professor Nelio Alves, na plataforma Udemy.
 
-O proposito consiste em aprender a criar um projeto Spring Boot em Java, implementado um modelo de dominio com as entidades de um negocio, estruturando-o em camadas logicas, configurando banco de dados de teste (H2), criando um CRUD completo e tratamento de excecoes. 
-
+O propósito consiste em aprender a criar um projeto Spring Boot em Java, implementado um modelo de domínio com as entidades de um negócio, estruturando-o em camadas lógicas, configurando banco de dados de teste (H2), criando um CRUD completo e tratamento de exceções.
 
 ## Modelo de domínio
 ![Modelo Conceitual](https://github.com/amandaoliveiracampos/course-spring-boot/blob/main/assets/Model.png)
 
-## Instancia de domínio
+## Instância de domínio
 ![Modelo Conceitual](https://github.com/amandaoliveiracampos/course-spring-boot/blob/main/assets/Instace.png)
 
-## Logica de domínio
+## Lógica de domínio
 ![Modelo Conceitual](https://github.com/amandaoliveiracampos/course-spring-boot/blob/main/assets/Logical.png)
 
 # Tecnologias utilizadas
@@ -42,4 +41,4 @@ mvn spring-boot:run
 
 Amanda Oliveira Campos
 
-https://www.linkedin.com/in/amanda-oliveira-campos/
+<a href="https://www.linkedin.com/in/amanda-oliveira-campos/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
